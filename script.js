@@ -81,9 +81,6 @@ function renderTaskView(li, task) {
     ${task.priority ? `<span class="priority-symbol ${task.priority}" title="Priority: ${task.priority}"></span>` : ""}
     ${task.desc ? `<p class="task-desc">${task.desc}</p>` : ""}
     ${task.deadline ? `<p class="task-deadline">🗓 ${task.deadline}</p>` : ""}
-    
-
-
     `;
 
   // Checkbox toggle
