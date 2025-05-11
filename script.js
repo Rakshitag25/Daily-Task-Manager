@@ -42,6 +42,13 @@ taskForm.addEventListener('submit', function (e) {
   localStorage.setItem("tasks", JSON.stringify(tasks));
   filterTasks(currentFilter);
   taskForm.reset();
+document.getElementById('task-deadline').value = new Date().toISOString().split('T')[0];
+
+const now = new Date();
+const hours = now.getHours().toString().padStart(2, '0');
+const minutes = now.getMinutes().toString().padStart(2, '0');
+document.getElementById('task-time').value = `${hours}:${minutes}`;
+
 });
 
 function addTaskToDOM(task) {
