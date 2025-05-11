@@ -4,16 +4,15 @@ const titleInput = document.getElementById('task-title');
 const descInput = document.getElementById('task-desc');
 const deadlineDateInput = document.getElementById('task-deadline-date');
 const deadlineTimeInput = document.getElementById('task-deadline-time');
-
+const priorityInput = document.getElementById('task-priority');
 const now = new Date();
 const currentDate = now.toISOString().split('T')[0];
 const currentTime = now.toTimeString().split(':').slice(0, 2).join(':');
+const taskList = document.getElementById('task-list');
 
 deadlineDateInput.value = currentDate;
 deadlineTimeInput.value = currentTime;
 
-const taskList = document.getElementById('task-list');
-const priorityInput = document.getElementById('task-priority');
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 let currentFilter = 'all';
 
@@ -45,12 +44,11 @@ taskForm.addEventListener('submit', function (e) {
   localStorage.setItem("tasks", JSON.stringify(tasks));
   filterTasks(currentFilter);
   taskForm.reset();
-document.getElementById('task-deadline').value = new Date().toISOString().split('T')[0];
-
-const now = new Date();
-const hours = now.getHours().toString().padStart(2, '0');
-const minutes = now.getMinutes().toString().padStart(2, '0');
-document.getElementById('task-time').value = `${hours}:${minutes}`;
+  document.getElementById('task-deadline-date').value = new Date().toISOString().split('T')[0];
+  const now = new Date();
+  const hours = now.getHours().toString().padStart(2, '0');
+  const minutes = now.getMinutes().toString().padStart(2, '0');
+  document.getElementById('task-deadline-time').value = `${hours}:${minutes}`;
 
 });
 
