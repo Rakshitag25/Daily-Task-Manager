@@ -119,29 +119,8 @@ h1{
     gap: 2rem;
     flex-wrap: nowrap;
   }
-    
-  @media (max-width: 768px) {
-    #main-content {
-      flex-direction: column;
-    }
-  
-    .left-panel,
-    .right-panel {
-      flex: 1 1 100%;
-      width: 100%;
-      min-width: 0;
 
-    }
-    .task-toolbar {
-        align-items: stretch;
-      }
-      #task-filters {
-        justify-content: space-between;
-      }
-  }
-  
-   
-  .left-panel, .right-panel {
+ .left-panel, .right-panel {
   flex: 1;
   height: 100%;
   overflow-y: auto;
@@ -168,6 +147,28 @@ h1{
     box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     border-radius: 10px;
   }
+  @media (max-width: 768px) {
+    #main-content {
+      flex-direction: column;
+    }
+  
+    .left-panel,
+    .right-panel {
+      flex: 1 1 100%;
+      width: 100%;
+      min-width: 0;
+
+    }
+    .task-toolbar {
+        align-items: stretch;
+      }
+      #task-filters {
+        justify-content: space-between;
+      }
+  }
+  
+   
+ 
 /*   left panel styling */
   /* Task Form */
   #task-form {
