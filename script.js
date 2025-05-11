@@ -2,15 +2,18 @@
 const taskForm = document.getElementById('task-form');
 const titleInput = document.getElementById('task-title');
 const descInput = document.getElementById('task-desc');
-const deadlineInput = document.getElementById('task-deadline');
+const deadlineDateInput = document.getElementById('task-deadline-date');
+const deadlineTimeInput = document.getElementById('task-deadline-time');
+
+const now = new Date();
+const currentDate = now.toISOString().split('T')[0];
+const currentTime = now.toTimeString().split(':').slice(0, 2).join(':');
+
+deadlineDateInput.value = currentDate;
+deadlineTimeInput.value = currentTime;
+
 const taskList = document.getElementById('task-list');
 const priorityInput = document.getElementById('task-priority');
-document.getElementById('task-deadline').value = new Date().toISOString().split('T')[0];
-const now = new Date();
-const hours = now.getHours().toString().padStart(2, '0');
-const minutes = now.getMinutes().toString().padStart(2, '0');
-document.getElementById('task-time').value = `${hours}:${minutes}`;
-
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 let currentFilter = 'all';
 
@@ -24,7 +27,7 @@ taskForm.addEventListener('submit', function (e) {
   e.preventDefault();
   const title = titleInput.value.trim();
   const desc = descInput.value.trim();
-  const deadline = deadlineInput.value;
+  const deadline = `${deadlineDateInput.value} ${deadlineTimeInput.value}`;
   const priority = priorityInput.value;
 
   if (!title) return alert("Task title is required!");
