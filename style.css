@@ -3,23 +3,13 @@ html{
     font-size:12px;
 }
 
-
 * {
     margin: 0;
     padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     overflow-x: hidden;
   }
- 
-  body {
-    padding: 1rem;
-    margin: 0;
-    padding: 0;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-  }
-
-  :root {
+   :root {
     --bg-color: #e9f0f7;
     --text-color: #222;
     --card-bg: #fff;
@@ -35,6 +25,15 @@ html{
     --primary: #2196f3; 
     --border: #333;
 }
+  body {
+    padding: 1rem;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+  }
+
+
 h1{
     font-size: 1.8rem;
     color: white;
@@ -120,13 +119,7 @@ h1{
     gap: 2rem;
     flex-wrap: nowrap;
   }
-  
-  .left-panel,
-  .right-panel {
-    width: 50%;
-  }
-  
-  
+    
   @media (max-width: 768px) {
     #main-content {
       flex-direction: column;
@@ -154,6 +147,7 @@ h1{
   border: 1px solid var(--border);
   min-width: 0;
   box-sizing: border-box;
+  width: 50%;
 }
 
   
@@ -171,7 +165,7 @@ h1{
     box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     border-radius: 10px;
   }
-  
+/*   left panel styling */
   /* Task Form */
   #task-form {
     display: flex;
@@ -214,6 +208,8 @@ h1{
   #task-form button:hover {
     background-color: #003f8c;
   }
+/* right panel styling */
+/* header */
   .task-header {
     display: flex;
     justify-content: space-between;
@@ -221,7 +217,12 @@ h1{
     flex-wrap: wrap; /* for responsiveness */
     margin-bottom: 0.5rem;
   }
-
+  
+  .task-header input[type="checkbox"] {
+    margin-right: 0.75rem;
+    accent-color: #004a99;
+  }
+  
   /* Filters */
   .task-toolbar {
     text-align: center;
@@ -301,19 +302,6 @@ h1{
     margin-bottom: 1rem;
     word-wrap: break-word;
     font-size: 1rem;
-  }
-  
-  
-  /* Task Header Row */
-  .task-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  .task-header input[type="checkbox"] {
-    margin-right: 0.75rem;
-    accent-color: #004a99;
   }
   
   /* Title Styling */
