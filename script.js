@@ -26,7 +26,8 @@ taskForm.addEventListener('submit', function (e) {
   e.preventDefault();
   const title = titleInput.value.trim();
   const desc = descInput.value.trim();
-  const deadline = `${deadlineDateInput.value} ${deadlineTimeInput.value}`;
+  const deadlineDate = `${deadlineDateInput.value}` ;
+  const deadlineTime = `${deadlineTimeInput.value}`;
   const priority = priorityInput.value;
 
   if (!title) return alert("Task title is required!");
@@ -35,7 +36,8 @@ taskForm.addEventListener('submit', function (e) {
     id: Date.now(),
     title,
     desc,
-    deadline,
+    deadlineDate,
+    deadlineTime,
     completed: false,
     priority
   };
@@ -80,7 +82,8 @@ function renderTaskView(li, task) {
     </div>
     ${task.priority ? `<span class="priority-symbol ${task.priority}" title="Priority: ${task.priority}"></span>` : ""}
     ${task.desc ? `<p class="task-desc">${task.desc}</p>` : ""}
-    ${task.deadline ? `<p class="task-deadline">🗓 ${task.deadline}</p>` : ""}
+    ${(task.deadlineDate || task.deadlineTime) ? `<p class="task-deadline">🗓 ${task.deadlineDate || ''} ${task.deadlineTime || ''}</p>` : ""}
+
     `;
 
   // Checkbox toggle
@@ -109,11 +112,13 @@ function renderTaskView(li, task) {
 }
 
 function renderEditForm(li, task) {
+    
   li.innerHTML = `
     <form class="edit-form">
       <input type="text" name="edit-title" value="${task.title}" required />
-      <textarea name="edit-desc">${task.desc || ''}"></textarea>
-      <input type="date" name="edit-deadline" value="${task.deadline || ''}" />
+      <textarea name="edit-desc">${task.desc || ''}</textarea>
+      <input type="date" name="edit-deadline-date" value="${task.deadlineDate || ''}" />
+      <input type="time" name="edit-deadline-time" value="${task.deadlineTime || ''}"  />
       <button type="submit">Save</button>
       <button type="button" class="cancel-btn">Cancel</button>
     </form>
@@ -125,7 +130,8 @@ function renderEditForm(li, task) {
     e.preventDefault();
     const newTitle = form.elements['edit-title'].value.trim();
     const newDesc = form.elements['edit-desc'].value.trim();
-    const newDeadline = form.elements['edit-deadline'].value;
+    const newDeadlineDate = form.elements['edit-deadline-date'].value;
+    const newDeadlineTime = form.elements['edit-deadline-time'].value;
 
     if (!newTitle) {
       alert("Title is required");
@@ -135,7 +141,8 @@ function renderEditForm(li, task) {
     // Update the task
     task.title = newTitle;
     task.desc = newDesc;
-    task.deadline = newDeadline;
+    task.deadlineDate = newDeadlineDate;
+    task.deadlineTime = newDeadlineTime;
 
     localStorage.setItem("tasks", JSON.stringify(tasks));
     renderTaskView(li, task);
