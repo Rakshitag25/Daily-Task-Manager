@@ -21,8 +21,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
 // Handle form submission
 taskForm.addEventListener('submit', function (e) {
-  console.log("Form submitted");
-
   e.preventDefault();
   const title = titleInput.value.trim();
   const desc = descInput.value.trim();
