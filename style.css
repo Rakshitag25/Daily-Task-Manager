@@ -58,12 +58,15 @@ h1{
     background-color: #123f6f;
     color: white;
     margin-bottom: 1rem;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    font-size: 0.9rem;
   }
   
   #main-header h1 {
     margin: 0;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
+    flex: 1;
+    text-align: center;
     
   }
 
@@ -72,7 +75,14 @@ h1{
     align-items: center;
     gap: 1rem;
   }
-  
+   #theme-toggle {
+    padding: 0.5rem 1rem;
+    font-size: 2.5rem;
+    cursor: pointer;
+    border: none;
+    background-color:#123f6f;
+    transition: all 0.2s ease;
+  }
   #weather-button {
     padding: 0.5rem 1rem;
     font-size: 1rem;
@@ -392,17 +402,6 @@ h1{
     border: 2px dashed #004a99;
   }
   
-  
-  #theme-toggle {
-    padding: 0.5rem 1rem;
-    font-size: 2.5rem;
-    cursor: pointer;
-    border: none;
-    background-color:#123f6f;
-    transition: all 0.2s ease;
-  }
-
- 
 #task-priority {
     padding: 0.5rem;
     font-size: 1rem;
